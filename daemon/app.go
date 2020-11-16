@@ -1,7 +1,6 @@
 package daemon
 
 import (
-	"fmt"
 	"os"
 	"os/signal"
 	"time"
@@ -39,11 +38,7 @@ func (app *Application) Start() {
 
 	sig := make(chan os.Signal, 1)
 	signal.Notify(sig, os.Interrupt)
-
-	select {
-	case <-sig:
-		fmt.Printf("interrupt signal received")
-	}
+	<-sig
 
 	logger.Info("Stopping the monitor...")
 
