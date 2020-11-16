@@ -1,0 +1,24 @@
+bsn-irita:
+  endpoint: http://localhost:26657
+  interval: 5
+  provider_addr: iaa1cq3xx80jym3jshlxmwnfwu840jxta032aa4jss
+
+chainlink:
+  endpoint: http://localhost:6688/v2/ping
+  access_key: 
+  secret: 
+  timeout: 15
+  retry: 3
+  interval: 5
+
+external-initiator:
+  endpoint: http://localhost:8080/health
+  timeout: 15
+  retry: 3
+  interval: 5
+
+external-adapter:
+  endpoint: http://localhost:8081/health
+  timeout: 15
+  retry: 3
+  interval: 5
