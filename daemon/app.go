@@ -55,14 +55,17 @@ func (app *Application) Stop() {
 }
 
 func newBIritaMonitor(config *viper.Viper) *birita.Monitor {
-	url := config.GetString("bsn-irita.endpoint")
+	rpcURL := config.GetString("bsn-irita.rpc_endpoint")
+	gRPCURL := config.GetString("bsn-irita.grpc_endpoint")
 	interval := config.GetInt64("bsn-irita.interval")
 	providerAddrs := config.GetStringSlice("bsn-irita.provider_addresses")
 
-	endpoint := base.NewEndpointFromURL(url)
+	rpcEndpoint := base.NewEndpointFromURL(rpcURL)
+	gRPCEndpoint := base.NewEndpointFromURL(gRPCURL)
 
 	return birita.NewMonitor(
-		endpoint,
+		rpcEndpoint,
+		gRPCEndpoint,
 		time.Duration(interval)*time.Second,
 		providerAddrs,
 	)

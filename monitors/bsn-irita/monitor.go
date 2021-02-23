@@ -22,7 +22,8 @@ const (
 
 type Monitor struct {
 	Client            servicesdk.ServiceClient
-	Endpoint          base.Endpoint
+	RPCEndpoint       base.Endpoint
+	GRPCEndpoint      base.Endpoint
 	Interval          time.Duration
 	ProviderAddresses map[string]bool
 	lastHeight        int64
@@ -30,12 +31,14 @@ type Monitor struct {
 }
 
 func NewMonitor(
-	endpoint base.Endpoint,
+	rpcEndpoint base.Endpoint,
+	gRPCEndpoint base.Endpoint,
 	interval time.Duration,
 	providerAddrs []string,
 ) *Monitor {
 	cfg := types.ClientConfig{
-		NodeURI: endpoint.URL,
+		NodeURI:  rpcEndpoint.URL,
+		GRPCAddr: gRPCEndpoint.URL,
 	}
 	serviceClient := servicesdk.NewServiceClient(cfg)
 
@@ -46,7 +49,8 @@ func NewMonitor(
 
 	return &Monitor{
 		Client:            serviceClient,
-		Endpoint:          endpoint,
+		RPCEndpoint:       rpcEndpoint,
+		GRPCEndpoint:      gRPCEndpoint,
 		Interval:          interval,
 		ProviderAddresses: addressMap,
 	}

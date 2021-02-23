@@ -1,5 +1,6 @@
 bsn-irita:
-  endpoint: http://localhost:26657
+  rpc_endpoint: http://localhost:26657
+  grpc_endpoint: localhost:9090
   interval: 5
   provider_addresses:
     - iaa1cq3xx80jym3jshlxmwnfwu840jxta032aa4jss
