@@ -1,7 +1,8 @@
 bsn-irita:
   endpoint: http://localhost:26657
   interval: 5
-  provider_addr: iaa1cq3xx80jym3jshlxmwnfwu840jxta032aa4jss
+  provider_addresses:
+    - iaa1cq3xx80jym3jshlxmwnfwu840jxta032aa4jss
 
 chainlink:
   endpoint: http://localhost:6688/v2/ping
